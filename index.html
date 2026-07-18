@@ -5,41 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GiftSaga | Crafting Memories That Last Forever</title>
     
-    <!-- Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- Design System --- */
         :root {
-            --bg: #FFF9F6;
-            --card: #FFFFFF;
-            --primary: #C79B61;
-            --primary-hover: #b88a4f;
-            --secondary: #F6D7D7;
-            --text: #222222;
-            --muted: #6A6A6A;
-            --success: #2D8C4A;
-            --glass: rgba(255, 255, 255, 0.65);
-            --glass-border: rgba(255, 255, 255, 0.9);
-            --shadow-sm: 0 4px 20px rgba(0,0,0,0.03);
-            --shadow-md: 0 10px 30px rgba(0,0,0,0.06);
+            --bg: #FFF9F6; --card: #FFFFFF; --primary: #C79B61; --primary-hover: #b88a4f;
+            --text: #222222; --muted: #6A6A6A; --success: #2D8C4A;
+            --glass: rgba(255, 255, 255, 0.75); --glass-border: rgba(255, 255, 255, 0.9);
+            --shadow-sm: 0 4px 20px rgba(0,0,0,0.03); --shadow-md: 0 10px 30px rgba(0,0,0,0.06);
             --shadow-lg: 0 20px 50px rgba(199, 155, 97, 0.15);
-            --radius: 16px;
-            --radius-lg: 24px;
-            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --radius: 16px; --radius-lg: 24px; --ease: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Poppins', sans-serif; background-color: var(--bg); color: var(--text);
+            line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased;
         }
 
         h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
@@ -47,252 +31,226 @@
         ul { list-style: none; }
         img { max-width: 100%; display: block; }
 
-        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
-        /* Animations */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s var(--ease); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s var(--ease); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
 
-        /* Header */
+        /* Header & Nav */
         header {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 24px 5%; transition: all 0.4s var(--ease);
+            padding: 20px 5%; transition: all 0.4s var(--ease);
         }
         header.scrolled {
-            background: rgba(255, 249, 246, 0.85);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            padding: 16px 5%; border-bottom: 1px solid rgba(0,0,0,0.05);
+            background: rgba(255, 249, 246, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 14px 5%; border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .logo { font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; color: var(--text); }
+        .logo { font-size: 1.6rem; font-weight: 700; letter-spacing: 1px; }
         .logo span { color: var(--primary); }
-        nav { display: flex; gap: 32px; }
-        nav a { font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
-        nav a:hover { color: var(--primary); }
-        .nav-icons { display: flex; align-items: center; gap: 20px; }
-        .nav-icons svg { width: 20px; height: 20px; cursor: pointer; transition: color 0.3s; }
+        
+        .desktop-nav { display: flex; gap: 28px; }
+        .desktop-nav a { font-size: 0.85rem; font-weight: 500; transition: color 0.3s; text-transform: uppercase; letter-spacing: 0.5px; }
+        .desktop-nav a:hover { color: var(--primary); }
+        
+        .nav-icons { display: flex; align-items: center; gap: 16px; }
+        .nav-icons svg { width: 18px; height: 18px; cursor: pointer; transition: color 0.3s; }
         .nav-icons svg:hover { color: var(--primary); }
         
         .btn {
-            padding: 14px 28px; border-radius: 50px; font-weight: 500; font-size: 0.9rem;
+            padding: 12px 24px; border-radius: 50px; font-weight: 500; font-size: 0.85rem;
             cursor: pointer; transition: all 0.4s var(--ease); border: none;
-            display: inline-flex; align-items: center; gap: 8px; text-align: center;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
         }
         .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 10px 20px rgba(199, 155, 97, 0.3); }
-        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 15px 30px rgba(199, 155, 97, 0.4); }
-        .btn-outline { background: transparent; color: var(--text); border: 1px solid rgba(34,34,34,0.2); }
-        .btn-outline:hover { border-color: var(--text); background: rgba(34,34,34,0.03); }
+        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+        .menu-toggle svg { width: 28px; height: 28px; stroke: var(--text); }
+        
+        .mobile-nav {
+            position: fixed; top: 0; right: -100%; width: 80%; max-width: 400px; height: 100vh;
+            background: rgba(255, 249, 246, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            z-index: 2000; padding: 80px 40px; transition: right 0.5s var(--ease);
+            display: flex; flex-direction: column; gap: 30px; box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+        }
+        .mobile-nav.active { right: 0; }
+        .mobile-nav a { font-size: 1.5rem; font-family: 'Playfair Display', serif; color: var(--text); }
+        .mobile-nav .btn { margin-top: 20px; }
+        .close-menu { position: absolute; top: 30px; right: 30px; font-size: 2rem; cursor: pointer; background: none; border: none; }
 
         /* Hero */
         .hero {
             display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh;
-            padding: 140px 5% 80px; align-items: center; gap: 60px;
+            padding: 120px 5% 60px; align-items: center; gap: 40px;
         }
         .hero-content { max-width: 600px; }
-        .hero h1 { font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 24px; font-weight: 600; }
-        .hero p { font-size: 1.1rem; color: var(--muted); margin-bottom: 40px; line-height: 1.8; }
-        .hero-btns { display: flex; gap: 16px; margin-bottom: 48px; }
-        .trust-badges { display: flex; gap: 24px; flex-wrap: wrap; }
-        .badge { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--muted); font-weight: 500; }
-        .badge svg { width: 18px; height: 18px; color: var(--primary); }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 20px; font-weight: 600; }
+        .hero p { font-size: clamp(1rem, 2vw, 1.1rem); color: var(--muted); margin-bottom: 30px; }
+        .hero-btns { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
+        .trust-badges { display: flex; gap: 20px; flex-wrap: wrap; }
+        .badge { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+        .badge svg { width: 16px; height: 16px; color: var(--primary); }
 
-        .hero-visual { position: relative; height: 650px; }
+        .hero-visual { position: relative; height: 60vh; min-height: 400px; }
         .hero-img-main {
             width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md); transition: transform 0.1s linear;
+            box-shadow: var(--shadow-md);
         }
         .glass-card {
             position: absolute; background: var(--glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--glass-border); border-radius: var(--radius);
-            padding: 20px; box-shadow: var(--shadow-sm);
+            padding: 16px; box-shadow: var(--shadow-sm);
         }
-        .glass-card-1 { bottom: 40px; left: -40px; display: flex; align-items: center; gap: 12px; animation: float 6s ease-in-out infinite; }
-        .glass-card-2 { top: 40px; right: -30px; text-align: center; animation: float 8s ease-in-out infinite reverse; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .glass-card-1 { bottom: 30px; left: -20px; display: flex; align-items: center; gap: 10px; animation: float 6s ease-in-out infinite; }
+        .glass-card-2 { top: 30px; right: -10px; text-align: center; animation: float 8s ease-in-out infinite reverse; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
         /* Stats */
-        .stats-wrapper { margin: -60px auto 80px; max-width: 1200px; padding: 0 5%; position: relative; z-index: 10; }
+        .stats-wrapper { margin: -40px auto 60px; max-width: 1200px; padding: 0 5%; position: relative; z-index: 10; }
         .stats {
             background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border);
-            border-radius: var(--radius-lg); padding: 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+            border-radius: var(--radius-lg); padding: 30px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
             box-shadow: var(--shadow-md);
         }
         .stat-item { text-align: center; border-right: 1px solid rgba(0,0,0,0.05); }
         .stat-item:last-child { border-right: none; }
-        .stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary); font-weight: 600; margin-bottom: 8px; }
-        .stat-label { font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+        .stat-num { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--primary); font-weight: 600; }
+        .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
 
         /* Sections */
-        .section { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; font-weight: 600; }
-        .section-sub { color: var(--muted); font-size: 1.1rem; }
+        .section { padding: 80px 5%; max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 12px; }
+        .section-sub { color: var(--muted); font-size: clamp(0.9rem, 2vw, 1.1rem); }
 
         /* Occasions */
-        .occasions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .occasions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .occasion-card {
-            position: relative; border-radius: var(--radius); overflow: hidden; height: 320px; cursor: pointer;
+            position: relative; border-radius: var(--radius); overflow: hidden; height: 280px; cursor: pointer;
             box-shadow: var(--shadow-sm); transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
         }
         .occasion-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
-        .occasion-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+        .occasion-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
         .occasion-card:hover img { transform: scale(1.08); }
         .occasion-overlay {
             position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
-            display: flex; align-items: flex-end; padding: 24px;
+            display: flex; align-items: flex-end; padding: 20px;
         }
-        .occasion-overlay h3 { color: #fff; font-size: 1.5rem; font-weight: 500; }
+        .occasion-overlay h3 { color: #fff; font-size: 1.2rem; font-weight: 500; }
 
         /* Products */
-        .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
         .product-card {
-            background: var(--card); border-radius: var(--radius); padding: 16px;
-            box-shadow: var(--shadow-sm); transition: all 0.4s var(--ease); position: relative; overflow: hidden;
+            background: var(--card); border-radius: var(--radius); padding: 12px;
+            box-shadow: var(--shadow-sm); transition: all 0.4s var(--ease);
         }
         .product-card:hover { box-shadow: var(--shadow-md); transform: translateY(-5px); }
-        .product-img-wrap { border-radius: 12px; overflow: hidden; margin-bottom: 20px; position: relative; aspect-ratio: 4/5; }
+        .product-img-wrap { border-radius: 12px; overflow: hidden; margin-bottom: 16px; position: relative; aspect-ratio: 4/5; }
         .product-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
         .product-card:hover .product-img-wrap img { transform: scale(1.05); }
         .product-actions {
-            position: absolute; bottom: -60px; left: 0; width: 100%; display: flex; justify-content: center; gap: 12px; padding: 10px;
-            transition: bottom 0.4s var(--ease);
+            position: absolute; bottom: 10px; left: 0; width: 100%; display: flex; justify-content: center; gap: 10px; padding: 10px;
         }
-        .product-card:hover .product-actions { bottom: 15px; }
         .action-btn {
             background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);
-            width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
             cursor: pointer; color: var(--text); transition: all 0.3s;
         }
-        .action-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
-        .product-info h4 { font-size: 1.2rem; margin-bottom: 8px; }
-        .product-info p { color: var(--muted); font-size: 0.9rem; margin-bottom: 12px; }
-        .product-price { font-weight: 600; font-size: 1.1rem; color: var(--primary); }
+        .action-btn:hover { background: var(--primary); color: #fff; }
+        .product-info h4 { font-size: 1.1rem; margin-bottom: 6px; }
+        .product-info p { color: var(--muted); font-size: 0.85rem; margin-bottom: 10px; }
+        .product-price { font-weight: 600; font-size: 1rem; color: var(--primary); }
 
         /* Features */
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
         .feature-card {
-            text-align: center; padding: 40px 30px; background: var(--card); border-radius: var(--radius);
+            text-align: center; padding: 40px 20px; background: var(--card); border-radius: var(--radius);
             box-shadow: var(--shadow-sm); transition: transform 0.4s var(--ease);
         }
         .feature-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-md); }
-        .feature-icon {
-            width: 70px; height: 70px; margin: 0 auto 24px; background: var(--bg); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; color: var(--primary);
-        }
-        .feature-icon svg { width: 32px; height: 32px; }
-        .feature-card h3 { font-size: 1.4rem; margin-bottom: 12px; font-weight: 500; }
-        .feature-card p { color: var(--muted); font-size: 0.95rem; }
+        .feature-icon { width: 60px; height: 60px; margin: 0 auto 20px; background: var(--bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+        .feature-icon svg { width: 28px; height: 28px; }
+        .feature-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .feature-card p { color: var(--muted); font-size: 0.9rem; }
 
         /* Process */
-        .process-timeline { display: flex; justify-content: space-between; position: relative; margin-top: 60px; }
-        .process-timeline::before {
-            content: ''; position: absolute; top: 40px; left: 0; width: 100%; height: 1px;
-            background: linear-gradient(to right, transparent, var(--primary), transparent); z-index: 0;
-        }
+        .process-timeline { display: flex; justify-content: space-between; position: relative; margin-top: 40px; }
+        .process-timeline::before { content: ''; position: absolute; top: 40px; left: 0; width: 100%; height: 1px; background: linear-gradient(to right, transparent, var(--primary), transparent); z-index: 0; }
         .process-step { text-align: center; width: 23%; position: relative; z-index: 1; }
-        .step-icon {
-            width: 80px; height: 80px; background: var(--card); border: 1px solid var(--primary);
-            border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;
-            color: var(--primary); font-size: 1.5rem; box-shadow: 0 0 0 10px var(--bg);
-        }
-        .process-step h3 { font-size: 1.3rem; margin-bottom: 8px; font-weight: 500; }
-        .process-step p { color: var(--muted); font-size: 0.9rem; }
+        .step-icon { width: 70px; height: 70px; background: var(--card); border: 1px solid var(--primary); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.3rem; box-shadow: 0 0 0 10px var(--bg); }
+        .process-step h3 { font-size: 1.1rem; margin-bottom: 6px; }
+        .process-step p { color: var(--muted); font-size: 0.85rem; }
 
         /* Video */
-        .video-container {
-            max-width: 1000px; margin: 0 auto; position: relative; border-radius: var(--radius-lg);
-            overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 16/9;
-        }
+        .video-container { max-width: 1000px; margin: 0 auto; position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 16/9; }
         .video-container img { width: 100%; height: 100%; object-fit: cover; }
         .video-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; }
-        .play-btn {
-            width: 90px; height: 90px; background: var(--glass); backdrop-filter: blur(10px);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; border: 1px solid var(--glass-border); transition: transform 0.3s var(--ease);
-        }
+        .play-btn { width: 70px; height: 70px; background: var(--glass); backdrop-filter: blur(10px); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid var(--glass-border); transition: transform 0.3s var(--ease); }
         .play-btn:hover { transform: scale(1.1); }
-        .play-btn svg { width: 30px; height: 30px; color: #fff; margin-left: 5px; }
+        .play-btn svg { width: 24px; height: 24px; color: #fff; margin-left: 4px; }
 
         /* Testimonials */
-        .testimonials-wrapper { overflow: hidden; padding: 40px 0; }
-        .testimonials-track { display: flex; transition: transform 0.8s var(--ease); gap: 30px; }
-        .testimonial-card {
-            min-width: calc(33.333% - 20px); background: var(--card); padding: 40px;
-            border-radius: var(--radius); box-shadow: var(--shadow-sm);
-        }
-        .t-user { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-        .t-user img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
-        .t-user h4 { font-size: 1.2rem; font-weight: 500; }
-        .t-stars { color: var(--primary); display: flex; gap: 2px; margin-bottom: 15px; }
-        .t-text { color: var(--muted); font-style: italic; line-height: 1.8; }
+        .testimonials-wrapper { overflow: hidden; padding: 20px 0; }
+        .testimonials-track { display: flex; transition: transform 0.8s var(--ease); gap: 20px; }
+        .testimonial-card { min-width: calc(33.333% - 14px); background: var(--card); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+        .t-user { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
+        .t-user img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+        .t-user h4 { font-size: 1.1rem; font-weight: 500; }
+        .t-stars { color: var(--primary); display: flex; gap: 2px; margin-bottom: 10px; }
+        .t-text { color: var(--muted); font-style: italic; line-height: 1.7; font-size: 0.9rem; }
 
         /* Instagram */
-        .insta-grid { column-count: 4; column-gap: 20px; }
-        .insta-item { margin-bottom: 20px; border-radius: var(--radius); overflow: hidden; position: relative; cursor: pointer; }
+        .insta-grid { column-count: 4; column-gap: 15px; }
+        .insta-item { margin-bottom: 15px; border-radius: var(--radius); overflow: hidden; position: relative; cursor: pointer; }
         .insta-item img { width: 100%; transition: transform 0.6s var(--ease); }
         .insta-item:hover img { transform: scale(1.1); }
-        .insta-overlay {
-            position: absolute; inset: 0; background: rgba(199, 155, 97, 0.85); opacity: 0;
-            display: flex; align-items: center; justify-content: center; transition: opacity 0.4s; color: #fff;
-        }
+        .insta-overlay { position: absolute; inset: 0; background: rgba(199, 155, 97, 0.85); opacity: 0; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s; color: #fff; }
         .insta-item:hover .insta-overlay { opacity: 1; }
-        .insta-overlay svg { width: 30px; height: 30px; }
+        .insta-overlay svg { width: 24px; height: 24px; }
 
         /* FAQ */
         .faq-list { max-width: 800px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
-        .faq-q {
-            padding: 24px 0; font-size: 1.3rem; cursor: pointer; display: flex;
-            justify-content: space-between; align-items: center; font-weight: 500;
-        }
+        .faq-q { padding: 20px 0; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; }
         .faq-icon { transition: transform 0.4s var(--ease); color: var(--primary); }
         .faq-item.active .faq-icon { transform: rotate(45deg); }
         .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease); }
-        .faq-a p { padding-bottom: 24px; color: var(--muted); line-height: 1.8; }
+        .faq-a p { padding-bottom: 20px; color: var(--muted); line-height: 1.7; font-size: 0.9rem; }
 
         /* Newsletter */
-        .newsletter-box {
-            background: var(--card); border-radius: var(--radius-lg); padding: 80px 40px;
-            text-align: center; box-shadow: var(--shadow-md); max-width: 800px; margin: 0 auto;
-            border: 1px solid var(--glass-border);
-        }
-        .newsletter-form { display: flex; gap: 10px; max-width: 500px; margin: 30px auto 0; }
-        .newsletter-form input {
-            flex: 1; padding: 16px 24px; border-radius: 50px; border: 1px solid rgba(0,0,0,0.1);
-            font-family: 'Poppins', sans-serif; font-size: 1rem; outline: none; transition: border 0.3s;
-        }
+        .newsletter-box { background: var(--card); border-radius: var(--radius-lg); padding: 60px 20px; text-align: center; box-shadow: var(--shadow-md); max-width: 800px; margin: 0 auto; border: 1px solid var(--glass-border); }
+        .newsletter-form { display: flex; gap: 10px; max-width: 500px; margin: 30px auto 0; padding: 0 20px; }
+        .newsletter-form input { flex: 1; padding: 14px 20px; border-radius: 50px; border: 1px solid rgba(0,0,0,0.1); font-family: 'Poppins', sans-serif; font-size: 0.9rem; outline: none; }
         .newsletter-form input:focus { border-color: var(--primary); }
 
         /* Footer */
-        footer { background: #1A1A1A; color: #fff; padding: 80px 5% 40px; margin-top: 100px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1400px; margin: 0 auto; }
-        .footer-logo { font-size: 2rem; color: var(--primary); margin-bottom: 20px; display: block; font-weight: 700; }
-        .footer-col h4 { font-size: 1.1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: #aaa; transition: color 0.3s; font-size: 0.95rem; }
+        footer { background: #1A1A1A; color: #fff; padding: 60px 5% 30px; margin-top: 80px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px; max-width: 1400px; margin: 0 auto; }
+        .footer-logo { font-size: 1.8rem; color: var(--primary); margin-bottom: 15px; display: block; font-weight: 700; }
+        .footer-col h4 { font-size: 1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: #aaa; transition: color 0.3s; font-size: 0.9rem; }
         .footer-col ul li a:hover { color: var(--primary); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 60px; padding-top: 20px; text-align: center; color: #888; font-size: 0.9rem; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 20px; text-align: center; color: #888; font-size: 0.8rem; }
 
         /* Floating WhatsApp */
-        .floating-wa {
-            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
-            background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 20px rgba(45, 140, 74, 0.4); z-index: 999; cursor: pointer;
-            transition: transform 0.3s var(--ease);
-        }
+        .floating-wa { position: fixed; bottom: 20px; right: 20px; width: 55px; height: 55px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(45, 140, 74, 0.4); z-index: 999; cursor: pointer; transition: transform 0.3s var(--ease); }
         .floating-wa:hover { transform: scale(1.1); }
-        .floating-wa svg { width: 30px; height: 30px; color: #fff; }
+        .floating-wa svg { width: 28px; height: 28px; color: #fff; }
 
-        /* Responsive */
+        /* --- MOBILE RESPONSIVE FIXES --- */
         @media (max-width: 1024px) {
-            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 120px; }
+            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 100px; }
             .hero-btns, .trust-badges { justify-content: center; }
-            .hero-visual { height: 400px; margin-top: 40px; }
+            .hero-visual { height: 50vh; margin-top: 30px; }
             .stats { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .stat-item:nth-child(2) { border-right: none; }
             .occasions-grid, .products-grid { grid-template-columns: repeat(2, 1fr); }
             .features-grid { grid-template-columns: 1fr; }
             .process-timeline { flex-direction: column; gap: 40px; }
@@ -301,273 +259,294 @@
             .insta-grid { column-count: 2; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
+
         @media (max-width: 768px) {
-            nav, .nav-icons { display: none; }
-            .stats { grid-template-columns: 1fr; }
-            .stat-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 20px; }
-            .stat-item:last-child { border-bottom: none; }
-            .occasions-grid, .products-grid { grid-template-columns: 1fr; }
-            .insta-grid { column-count: 1; }
-            .footer-grid { grid-template-columns: 1fr; }
+            /* Header Mobile */
+            .desktop-nav, .nav-icons, header > .btn { display: none; }
+            .menu-toggle { display: block; }
+            
+            /* Hero Mobile */
+            .hero { padding: 100px 5% 40px; gap: 20px; }
+            .glass-card-1 { left: 0; bottom: 10px; padding: 10px; }
+            .glass-card-2 { right: 0; top: 10px; padding: 10px; }
+            .glass-card span { font-size: 0.8rem !important; }
+            
+            /* Stats Mobile */
+            .stats { padding: 20px; gap: 20px 10px; }
+            .stat-num { font-size: 1.5rem; }
+            .stat-label { font-size: 0.65rem; }
+            
+            /* Grids Mobile */
+            .occasions-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .occasion-card { height: 180px; }
+            .occasion-overlay h3 { font-size: 1rem; }
+            .products-grid { grid-template-columns: 1fr; gap: 20px; }
+            
+            /* Testimonials Swipeable */
+            .testimonials-track { overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; -ms-overflow-style: none; scrollbar-width: none; }
+            .testimonials-track::-webkit-scrollbar { display: none; }
+            .testimonial-card { min-width: 85%; scroll-snap-align: center; }
+            
+            /* Newsletter & Footer */
             .newsletter-form { flex-direction: column; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .footer-logo { margin: 0 auto 15px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header id="navbar">
         <a href="#" class="logo">Gift<span>Saga</span></a>
-        <nav>
+        <nav class="desktop-nav">
             <a href="#home">Home</a>
             <a href="#collections">Collections</a>
             <a href="#occasions">Occasions</a>
-            <a href="#corporate">Corporate Gifts</a>
+            <a href="#corporate">Corporate</a>
             <a href="#about">About</a>
-            <a href="#contact">Contact</a>
         </nav>
         <div class="nav-icons">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
         </div>
         <a href="#shop" class="btn btn-primary magnetic">Shop Now</a>
+        
+        <!-- Mobile Toggle -->
+        <button class="menu-toggle" id="menuToggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
     </header>
 
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="close-menu" id="closeMenu">&times;</button>
+        <a href="#home">Home</a>
+        <a href="#collections">Collections</a>
+        <a href="#occasions">Occasions</a>
+        <a href="#corporate">Corporate</a>
+        <a href="#about">About</a>
+        <a href="#shop" class="btn btn-primary">Shop Now</a>
+    </div>
+
+    <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-content reveal">
             <h1>Every Gift Has A Story.<br>Make Yours Unforgettable.</h1>
-            <p>Discover bespoke, hand-crafted luxury gifts tailored for your most cherished celebrations. We don't just wrap presents; we encapsulate memories.</p>
+            <p>Discover bespoke, hand-crafted luxury gifts tailored for your most cherished celebrations.</p>
             <div class="hero-btns">
-                <a href="#collections" class="btn btn-primary magnetic">Shop Collection</a>
-                <a href="#wa" class="btn btn-outline">WhatsApp Order</a>
+                <a href="#collections" class="btn btn-primary">Shop Collection</a>
+                <a href="#wa" class="btn btn-outline" style="border:1px solid rgba(34,34,34,0.2); border-radius:50px; padding:12px 24px;">WhatsApp Order</a>
             </div>
             <div class="trust-badges">
-                <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> 5000+ Happy Customers</div>
-                <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> 100% Personalized</div>
-                <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> Worldwide Shipping</div>
+                <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> 5000+ Happy</div>
+                <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> 100% Custom</div>
             </div>
         </div>
         <div class="hero-visual reveal reveal-delay-1">
-            <!-- VERIFIED STABLE IMAGE -->
             <img src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=1000&q=80" alt="Luxury Gift Box" class="hero-img-main" id="heroParallax">
             <div class="glass-card glass-card-1">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="width:24px;height:24px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <div><strong style="font-family:'Playfair Display',serif; font-size:1.1rem;">Premium</strong><br><span style="font-size:0.8rem; color:var(--muted)">Quality Assured</span></div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="width:20px;height:20px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <div><strong style="font-family:'Playfair Display',serif; font-size:0.9rem;">Premium</strong><br><span style="font-size:0.7rem; color:var(--muted)">Quality</span></div>
             </div>
             <div class="glass-card glass-card-2">
-                <span style="font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--primary)">New</span><br>
-                <span style="font-size:0.8rem; color:var(--muted)">Autumn Collection</span>
+                <span style="font-family:'Playfair Display',serif; font-size:1rem; color:var(--primary)">New</span><br>
+                <span style="font-size:0.7rem; color:var(--muted)">Collection</span>
             </div>
         </div>
     </section>
 
+    <!-- Stats -->
     <div class="stats-wrapper reveal">
         <div class="stats">
-            <div class="stat-item"><div class="stat-num counter" data-target="15000">0</div><div class="stat-label">Orders Delivered</div></div>
-            <div class="stat-item"><div class="stat-num counter" data-target="4.9" data-decimal="1">0</div><div class="stat-label">Average Rating</div></div>
-            <div class="stat-item"><div class="stat-num counter" data-target="2500">0</div><div class="stat-label">Custom Gifts</div></div>
-            <div class="stat-item"><div class="stat-num counter" data-target="50">0</div><div class="stat-label">Corporate Clients</div></div>
+            <div class="stat-item"><div class="stat-num counter" data-target="15000">0</div><div class="stat-label">Orders</div></div>
+            <div class="stat-item"><div class="stat-num counter" data-target="4.9" data-decimal="1">0</div><div class="stat-label">Rating</div></div>
+            <div class="stat-item"><div class="stat-num counter" data-target="2500">0</div><div class="stat-label">Gifts</div></div>
+            <div class="stat-item"><div class="stat-num counter" data-target="50">0</div><div class="stat-label">Clients</div></div>
         </div>
     </div>
 
+    <!-- Occasions -->
     <section class="section" id="occasions">
         <div class="section-header reveal">
             <h2 class="section-title">Shop By Occasion</h2>
-            <p class="section-sub">Curated elegance for life's most beautiful moments.</p>
         </div>
         <div class="occasions-grid">
             <div class="occasion-card reveal"><img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=600&q=80" alt="Birthday"><div class="occasion-overlay"><h3>Birthday</h3></div></div>
             <div class="occasion-card reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=600&q=80" alt="Wedding"><div class="occasion-overlay"><h3>Wedding</h3></div></div>
             <div class="occasion-card reveal reveal-delay-2"><img src="https://images.unsplash.com/photo-1606312619070-d48dc20b63e0?auto=format&fit=crop&w=600&q=80" alt="Anniversary"><div class="occasion-overlay"><h3>Anniversary</h3></div></div>
-            <div class="occasion-card reveal"><img src="https://images.unsplash.com/photo-1522771930-80720ff25998?auto=format&fit=crop&w=600&q=80" alt="Baby Shower"><div class="occasion-overlay"><h3>Baby Shower</h3></div></div>
+            <div class="occasion-card reveal"><img src="https://images.unsplash.com/photo-1522771930-80720ff25998?auto=format&fit=crop&w=600&q=80" alt="Baby"><div class="occasion-overlay"><h3>Baby Shower</h3></div></div>
             <div class="occasion-card reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80" alt="Corporate"><div class="occasion-overlay"><h3>Corporate</h3></div></div>
-            <div class="occasion-card reveal reveal-delay-2"><img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80" alt="Housewarming"><div class="occasion-overlay"><h3>Housewarming</h3></div></div>
-            <!-- VERIFIED STABLE FESTIVAL IMAGE -->
+            <div class="occasion-card reveal reveal-delay-2"><img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80" alt="House"><div class="occasion-overlay"><h3>Housewarm</h3></div></div>
             <div class="occasion-card reveal"><img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=600&q=80" alt="Festival"><div class="occasion-overlay"><h3>Festival</h3></div></div>
-            <div class="occasion-card reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1610484195156-499e8ee17ed8?auto=format&fit=crop&w=600&q=80" alt="Custom"><div class="occasion-overlay"><h3>Custom Orders</h3></div></div>
+            <div class="occasion-card reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1610484195156-499e8ee17ed8?auto=format&fit=crop&w=600&q=80" alt="Custom"><div class="occasion-overlay"><h3>Custom</h3></div></div>
         </div>
     </section>
 
+    <!-- Products -->
     <section class="section" id="collections">
         <div class="section-header reveal">
             <h2 class="section-title">Featured Masterpieces</h2>
-            <p class="section-sub">Discover our most beloved personalized creations.</p>
         </div>
         <div class="products-grid">
             <div class="product-card reveal">
                 <div class="product-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=800&q=80" alt="Custom Frame">
+                    <img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=800&q=80" alt="Frame">
                     <div class="product-actions">
-                        <div class="action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
-                        <div class="action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
-                        <div class="action-btn" style="background:var(--success); color:#fff; border-color:var(--success);"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M17.472 14.382c-.297-.16-1.64-.815-1.897-.907-.297-.09-.513-.16-.73.16-.216.297-.797.907-.977 1.097-.18.18-.36.2-.657.07-.297-.16-1.255-.49-2.39-1.56-.883-.84-1.48-1.88-1.66-2.18-.18-.297-.02-.458.13-.607.14-.14.297-.36.447-.54.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.51-.07-.14-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56-.18-.01-.4-.01-.61-.01-.21 0-.54.08-.82.4-.28.31-1.07 1.05-1.07 2.55s1.1 2.96 1.25 3.16c.15.2 2.12 3.24 5.15 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.11-.26-.18-.55-.31z"></path></svg></div>
+                        <div class="action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="action-btn" style="background:var(--success); color:#fff; border-color:var(--success);"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M17.472 14.382c-.297-.16-1.64-.815-1.897-.907-.297-.09-.513-.16-.73.16-.216.297-.797.907-.977 1.097-.18.18-.36.2-.657.07-.297-.16-1.255-.49-2.39-1.56-.883-.84-1.48-1.88-1.66-2.18-.18-.297-.02-.458.13-.607.14-.14.297-.36.447-.54.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.51-.07-.14-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56-.18-.01-.4-.01-.61-.01-.21 0-.54.08-.82.4-.28.31-1.07 1.05-1.07 2.55s1.1 2.96 1.25 3.16c.15.2 2.12 3.24 5.15 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.11-.26-.18-.55-.31z"></path></svg></div>
                     </div>
                 </div>
-                <div class="product-info"><h4>Eternal Frames</h4><p>Handcrafted memory frames.</p><div class="product-price">$85.00</div></div>
+                <div class="product-info"><h4>Eternal Frames</h4><p>Memory frames.</p><div class="product-price">$85</div></div>
             </div>
             <div class="product-card reveal reveal-delay-1">
                 <div class="product-img-wrap">
                     <img src="https://images.unsplash.com/photo-1574276050769-9e9e4a84d869?auto=format&fit=crop&w=800&q=80" alt="Mug">
                     <div class="product-actions">
-                        <div class="action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
-                        <div class="action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
-                        <div class="action-btn" style="background:var(--success); color:#fff; border-color:var(--success);"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M17.472 14.382c-.297-.16-1.64-.815-1.897-.907-.297-.09-.513-.16-.73.16-.216.297-.797.907-.977 1.097-.18.18-.36.2-.657.07-.297-.16-1.255-.49-2.39-1.56-.883-.84-1.48-1.88-1.66-2.18-.18-.297-.02-.458.13-.607.14-.14.297-.36.447-.54.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.51-.07-.14-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56-.18-.01-.4-.01-.61-.01-.21 0-.54.08-.82.4-.28.31-1.07 1.05-1.07 2.55s1.1 2.96 1.25 3.16c.15.2 2.12 3.24 5.15 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.11-.26-.18-.55-.31z"></path></svg></div>
+                        <div class="action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="action-btn" style="background:var(--success); color:#fff; border-color:var(--success);"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M17.472 14.382c-.297-.16-1.64-.815-1.897-.907-.297-.09-.513-.16-.73.16-.216.297-.797.907-.977 1.097-.18.18-.36.2-.657.07-.297-.16-1.255-.49-2.39-1.56-.883-.84-1.48-1.88-1.66-2.18-.18-.297-.02-.458.13-.607.14-.14.297-.36.447-.54.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.51-.07-.14-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56-.18-.01-.4-.01-.61-.01-.21 0-.54.08-.82.4-.28.31-1.07 1.05-1.07 2.55s1.1 2.96 1.25 3.16c.15.2 2.12 3.24 5.15 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.11-.26-.18-.55-.31z"></path></svg></div>
                     </div>
                 </div>
-                <div class="product-info"><h4>Porcelain Whispers</h4><p>Personalized ceramic mugs.</p><div class="product-price">$45.00</div></div>
+                <div class="product-info"><h4>Porcelain Mugs</h4><p>Ceramic art.</p><div class="product-price">$45</div></div>
             </div>
             <div class="product-card reveal reveal-delay-2">
                 <div class="product-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1513201099705-a3ed20ceb951?auto=format&fit=crop&w=800&q=80" alt="Couple Gift">
+                    <img src="https://images.unsplash.com/photo-1513201099705-a3ed20ceb951?auto=format&fit=crop&w=800&q=80" alt="Couple">
                     <div class="product-actions">
-                        <div class="action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
-                        <div class="action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
-                        <div class="action-btn" style="background:var(--success); color:#fff; border-color:var(--success);"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M17.472 14.382c-.297-.16-1.64-.815-1.897-.907-.297-.09-.513-.16-.73.16-.216.297-.797.907-.977 1.097-.18.18-.36.2-.657.07-.297-.16-1.255-.49-2.39-1.56-.883-.84-1.48-1.88-1.66-2.18-.18-.297-.02-.458.13-.607.14-.14.297-.36.447-.54.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.51-.07-.14-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56-.18-.01-.4-.01-.61-.01-.21 0-.54.08-.82.4-.28.31-1.07 1.05-1.07 2.55s1.1 2.96 1.25 3.16c.15.2 2.12 3.24 5.15 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.11-.26-.18-.55-.31z"></path></svg></div>
+                        <div class="action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="action-btn" style="background:var(--success); color:#fff; border-color:var(--success);"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M17.472 14.382c-.297-.16-1.64-.815-1.897-.907-.297-.09-.513-.16-.73.16-.216.297-.797.907-.977 1.097-.18.18-.36.2-.657.07-.297-.16-1.255-.49-2.39-1.56-.883-.84-1.48-1.88-1.66-2.18-.18-.297-.02-.458.13-.607.14-.14.297-.36.447-.54.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.51-.07-.14-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56-.18-.01-.4-.01-.61-.01-.21 0-.54.08-.82.4-.28.31-1.07 1.05-1.07 2.55s1.1 2.96 1.25 3.16c.15.2 2.12 3.24 5.15 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.11-.26-.18-.55-.31z"></path></svg></div>
                     </div>
                 </div>
-                <div class="product-info"><h4>Duet Keepsakes</h4><p>Gifts for couples.</p><div class="product-price">$120.00</div></div>
+                <div class="product-info"><h4>Duet Keepsakes</h4><p>For couples.</p><div class="product-price">$120</div></div>
             </div>
-            <!-- VERIFIED STABLE HAMPER IMAGE -->
             <div class="product-card reveal">
                 <div class="product-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1522917702138-79a3be7b5221?auto=format&fit=crop&w=800&q=80" alt="Hampers">
+                    <img src="https://images.unsplash.com/photo-1522917702138-79a3be7b5221?auto=format&fit=crop&w=800&q=80" alt="Hamper">
                     <div class="product-actions">
-                        <div class="action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
-                        <div class="action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
-                        <div class="action-btn" style="background:var(--success); color:#fff; border-color:var(--success);"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M17.472 14.382c-.297-.16-1.64-.815-1.897-.907-.297-.09-.513-.16-.73.16-.216.297-.797.907-.977 1.097-.18.18-.36.2-.657.07-.297-.16-1.255-.49-2.39-1.56-.883-.84-1.48-1.88-1.66-2.18-.18-.297-.02-.458.13-.607.14-.14.297-.36.447-.54.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.51-.07-.14-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56-.18-.01-.4-.01-.61-.01-.21 0-.54.08-.82.4-.28.31-1.07 1.05-1.07 2.55s1.1 2.96 1.25 3.16c.15.2 2.12 3.24 5.15 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.11-.26-.18-.55-.31z"></path></svg></div>
+                        <div class="action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                        <div class="action-btn" style="background:var(--success); color:#fff; border-color:var(--success);"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M17.472 14.382c-.297-.16-1.64-.815-1.897-.907-.297-.09-.513-.16-.73.16-.216.297-.797.907-.977 1.097-.18.18-.36.2-.657.07-.297-.16-1.255-.49-2.39-1.56-.883-.84-1.48-1.88-1.66-2.18-.18-.297-.02-.458.13-.607.14-.14.297-.36.447-.54.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.51-.07-.14-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56-.18-.01-.4-.01-.61-.01-.21 0-.54.08-.82.4-.28.31-1.07 1.05-1.07 2.55s1.1 2.96 1.25 3.16c.15.2 2.12 3.24 5.15 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.11-.26-.18-.55-.31z"></path></svg></div>
                     </div>
                 </div>
-                <div class="product-info"><h4>Luxury Hampers</h4><p>Curated indulgence boxes.</p><div class="product-price">$250.00</div></div>
+                <div class="product-info"><h4>Luxury Hampers</h4><p>Indulgence.</p><div class="product-price">$250</div></div>
             </div>
         </div>
     </section>
 
-    <section class="section" style="background:var(--card); border-radius:var(--radius-lg); margin-top:40px;">
-        <div class="section-header reveal">
-            <h2 class="section-title">The GiftSaga Promise</h2>
-            <p class="section-sub">Uncompromising quality in every detail.</p>
-        </div>
+    <!-- Features -->
+    <section class="section" style="background:var(--card); border-radius:var(--radius-lg); margin-top:30px;">
+        <div class="section-header reveal"><h2 class="section-title">The GiftSaga Promise</h2></div>
         <div class="features-grid">
-            <div class="feature-card reveal"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>Handcrafted</h3><p>Made by master artisans with obsessive attention.</p></div>
-            <div class="feature-card reveal reveal-delay-1"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Premium Materials</h3><p>Only the finest woods, ceramics, and papers.</p></div>
-            <div class="feature-card reveal reveal-delay-2"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div><h3>Luxury Packaging</h3><p>Unboxing experiences designed to delight.</p></div>
+            <div class="feature-card reveal"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>Handcrafted</h3><p>Master artisans.</p></div>
+            <div class="feature-card reveal reveal-delay-1"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Premium</h3><p>Finest materials.</p></div>
+            <div class="feature-card reveal reveal-delay-2"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div><h3>Packaging</h3><p>Delightful unboxing.</p></div>
         </div>
     </section>
 
+    <!-- Process -->
     <section class="section">
-        <div class="section-header reveal">
-            <h2 class="section-title">Our Crafting Process</h2>
-        </div>
+        <div class="section-header reveal"><h2 class="section-title">Our Process</h2></div>
         <div class="process-timeline reveal">
-            <div class="process-step"><div class="step-icon">1</div><h3>Choose Product</h3><p>Select from our curated base.</p></div>
-            <div class="process-step"><div class="step-icon">2</div><h3>Customize</h3><p>Tell us your story & details.</p></div>
-            <div class="process-step"><div class="step-icon">3</div><h3>We Create</h3><p>Artisans bring it to life.</p></div>
-            <div class="process-step"><div class="step-icon">4</div><h3>Delivered</h3><p>Arrives with utmost love.</p></div>
+            <div class="process-step"><div class="step-icon">1</div><h3>Choose</h3><p>Curated base.</p></div>
+            <div class="process-step"><div class="step-icon">2</div><h3>Customize</h3><p>Your story.</p></div>
+            <div class="process-step"><div class="step-icon">3</div><h3>Create</h3><p>Artisans work.</p></div>
+            <div class="process-step"><div class="step-icon">4</div><h3>Deliver</h3><p>With love.</p></div>
         </div>
     </section>
 
+    <!-- Video -->
     <section class="section video-section reveal">
         <div class="video-container">
-            <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1200&q=80" alt="Video Cover">
-            <div class="video-overlay">
-                <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
-            </div>
+            <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1200&q=80" alt="Video">
+            <div class="video-overlay"><div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div></div>
         </div>
     </section>
 
+    <!-- Testimonials -->
     <section class="section">
-        <div class="section-header reveal">
-            <h2 class="section-title">Words of Love</h2>
-        </div>
+        <div class="section-header reveal"><h2 class="section-title">Words of Love</h2></div>
         <div class="testimonials-wrapper reveal">
             <div class="testimonials-track">
                 <div class="testimonial-card">
-                    <div class="t-user"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="User"><div><h4>Sarah J.</h4><span style="color:var(--muted); font-size:0.8rem">Wedding Gift</span></div></div>
-                    <div class="t-stars"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> x5</div>
-                    <p class="t-text">"Absolutely breathtaking packaging and quality. The personalization was flawless."</p>
+                    <div class="t-user"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="U"><div><h4>Sarah J.</h4><span style="color:var(--muted); font-size:0.75rem">Wedding</span></div></div>
+                    <div class="t-stars"><svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> x5</div>
+                    <p class="t-text">"Breathtaking packaging and flawless personalization."</p>
                 </div>
                 <div class="testimonial-card">
-                    <div class="t-user"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="User"><div><h4>Michael T.</h4><span style="color:var(--muted); font-size:0.8rem">Anniversary</span></div></div>
-                    <div class="t-stars"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> x5</div>
-                    <p class="t-text">"GiftSaga made our 10th anniversary unforgettable. Truly a premium experience."</p>
+                    <div class="t-user"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="U"><div><h4>Michael T.</h4><span style="color:var(--muted); font-size:0.75rem">Anniversary</span></div></div>
+                    <div class="t-stars"><svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> x5</div>
+                    <p class="t-text">"Made our anniversary unforgettable. Premium experience."</p>
                 </div>
                 <div class="testimonial-card">
-                    <div class="t-user"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="User"><div><h4>Elena R.</h4><span style="color:var(--muted); font-size:0.8rem">Corporate</span></div></div>
-                    <div class="t-stars"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> x5</div>
-                    <p class="t-text">"We ordered 50 custom hampers for clients. Impeccable service and elegance."</p>
+                    <div class="t-user"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="U"><div><h4>Elena R.</h4><span style="color:var(--muted); font-size:0.75rem">Corporate</span></div></div>
+                    <div class="t-stars"><svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> x5</div>
+                    <p class="t-text">"Ordered 50 hampers. Impeccable service and elegance."</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Instagram -->
     <section class="section">
-        <div class="section-header reveal">
-            <h2 class="section-title">@GiftSaga</h2>
-            <p class="section-sub">Join our community of memory makers.</p>
-        </div>
+        <div class="section-header reveal"><h2 class="section-title">@GiftSaga</h2></div>
         <div class="insta-grid reveal">
             <div class="insta-item"><img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=500&q=80" alt="IG"><div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></div></div>
             <div class="insta-item"><img src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=500&q=80" alt="IG"><div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></div></div>
             <div class="insta-item"><img src="https://images.unsplash.com/photo-1522917702138-79a3be7b5221?auto=format&fit=crop&w=500&q=80" alt="IG"><div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></div></div>
             <div class="insta-item"><img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=500&q=80" alt="IG"><div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></div></div>
-            <div class="insta-item"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=500&q=80" alt="IG"><div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></div></div>
-            <div class="insta-item"><img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=500&q=80" alt="IG"><div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></div></div>
-            <div class="insta-item"><img src="https://images.unsplash.com/photo-1610484195156-499e8ee17ed8?auto=format&fit=crop&w=500&q=80" alt="IG"><div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></div></div>
-            <div class="insta-item"><img src="https://images.unsplash.com/photo-1574276050769-9e9e4a84d869?auto=format&fit=crop&w=500&q=80" alt="IG"><div class="insta-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></div></div>
         </div>
     </section>
 
+    <!-- FAQ -->
     <section class="section">
-        <div class="section-header reveal">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-        </div>
+        <div class="section-header reveal"><h2 class="section-title">FAQ</h2></div>
         <div class="faq-list reveal">
             <div class="faq-item">
-                <div class="faq-q">How long does personalization take? <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></div>
-                <div class="faq-a"><p>Standard personalization takes 3-5 business days before shipping. Rush options are available at checkout for urgent occasions.</p></div>
+                <div class="faq-q">How long does personalization take? <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></div>
+                <div class="faq-a"><p>Standard personalization takes 3-5 business days before shipping.</p></div>
             </div>
             <div class="faq-item">
-                <div class="faq-q">Do you ship internationally? <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></div>
-                <div class="faq-a"><p>Yes, we deliver to over 50 countries worldwide with fully tracked, insulated luxury packaging.</p></div>
+                <div class="faq-q">Do you ship internationally? <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></div>
+                <div class="faq-a"><p>Yes, we deliver to over 50 countries worldwide with luxury packaging.</p></div>
             </div>
             <div class="faq-item">
-                <div class="faq-q">Can I include a handwritten note? <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></div>
-                <div class="faq-a"><p>Absolutely. Every GiftSaga order includes a complimentary, artisan-crafted card with your personalized message.</p></div>
+                <div class="faq-q">Can I include a handwritten note? <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></div>
+                <div class="faq-a"><p>Every order includes a complimentary, artisan-crafted card.</p></div>
             </div>
         </div>
     </section>
 
+    <!-- Newsletter -->
     <section class="section reveal">
         <div class="newsletter-box">
             <h2 class="section-title">Join the Inner Circle</h2>
-            <p class="section-sub">Receive early access to collections and exclusive gifting guides.</p>
             <form class="newsletter-form" onsubmit="event.preventDefault();">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit" class="btn btn-primary magnetic">Subscribe</button>
+                <input type="email" placeholder="Email address" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
             </form>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer id="contact">
         <div class="footer-grid">
             <div class="footer-col">
                 <span class="footer-logo">GiftSaga</span>
-                <p style="color:#aaa; font-size:0.95rem; line-height:1.8; max-width:300px;">Crafting memories that last forever. Luxury personalized gifting for the moments that matter most.</p>
+                <p style="color:#aaa; font-size:0.9rem; line-height:1.8;">Crafting memories that last forever. Luxury personalized gifting.</p>
             </div>
             <div class="footer-col">
                 <h4>Explore</h4>
-                <ul><li><a href="#">Shop All</a></li><li><a href="#">Occasions</a></li><li><a href="#">Corporate Gifts</a></li><li><a href="#">Our Story</a></li></ul>
+                <ul><li><a href="#">Shop All</a></li><li><a href="#">Occasions</a></li><li><a href="#">Corporate</a></li></ul>
             </div>
             <div class="footer-col">
                 <h4>Support</h4>
-                <ul><li><a href="#">FAQ</a></li><li><a href="#">Shipping & Returns</a></li><li><a href="#">Track Order</a></li><li><a href="#">Contact Us</a></li></ul>
+                <ul><li><a href="#">FAQ</a></li><li><a href="#">Shipping</a></li><li><a href="#">Contact</a></li></ul>
             </div>
             <div class="footer-col">
                 <h4>Connect</h4>
-                <ul><li><a href="#">Instagram</a></li><li><a href="#">Pinterest</a></li><li><a href="#">Facebook</a></li><li><a href="#">WhatsApp</a></li></ul>
+                <ul><li><a href="#">Instagram</a></li><li><a href="#">Pinterest</a></li><li><a href="#">WhatsApp</a></li></ul>
             </div>
         </div>
-        <div class="footer-bottom">&copy; 2023 GiftSaga. All rights reserved. Designed with elegance.</div>
+        <div class="footer-bottom">&copy; 2023 GiftSaga. All rights reserved.</div>
     </footer>
 
     <a href="#" class="floating-wa" title="Chat with us">
@@ -575,6 +554,16 @@
     </a>
 
     <script>
+        // Mobile Menu
+        const menuToggle = document.getElementById('menuToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileNav = document.getElementById('mobileNav');
+
+        menuToggle.addEventListener('click', () => mobileNav.classList.add('active'));
+        closeMenu.addEventListener('click', () => mobileNav.classList.remove('active'));
+        mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileNav.classList.remove('active')));
+
+        // Navbar Scroll & Parallax
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) nav.classList.add('scrolled');
@@ -582,26 +571,24 @@
 
             const heroImg = document.getElementById('heroParallax');
             if(heroImg && window.scrollY < window.innerHeight) {
-                heroImg.style.transform = `translateY(${window.scrollY * 0.15}px)`;
+                heroImg.style.transform = `translateY(${window.scrollY * 0.1}px)`;
             }
         });
 
+        // Reveal Animations
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+        // Counters
         const counters = document.querySelectorAll('.counter');
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const target = parseFloat(entry.target.getAttribute('data-target'));
                     const isDecimal = entry.target.getAttribute('data-decimal');
-                    const duration = 2000;
-                    const step = target / (duration / 16);
-                    let current = 0;
+                    const duration = 2000; const step = target / (duration / 16); let current = 0;
                     const update = () => {
                         current += step;
                         if (current < target) {
@@ -611,29 +598,16 @@
                             entry.target.innerText = isDecimal ? target.toFixed(1) : target + (target > 1000 ? '+' : '');
                         }
                     };
-                    update();
-                    counterObserver.unobserve(entry.target);
+                    update(); counterObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.5 });
         counters.forEach(c => counterObserver.observe(c));
 
-        document.querySelectorAll('.magnetic').forEach(btn => {
-            btn.addEventListener('mousemove', e => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-            });
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = `translate(0px, 0px)`;
-            });
-        });
-
+        // FAQ
         document.querySelectorAll('.faq-q').forEach(q => {
             q.addEventListener('click', () => {
-                const item = q.parentElement;
-                const a = q.nextElementSibling;
+                const item = q.parentElement; const a = q.nextElementSibling;
                 item.classList.toggle('active');
                 if (item.classList.contains('active')) a.style.maxHeight = a.scrollHeight + 'px';
                 else a.style.maxHeight = 0;
